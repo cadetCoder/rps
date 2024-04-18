@@ -6,9 +6,9 @@
 first = input("First: " )
 second = input("Second: ")
 
-sum = int(first) + int(second)
+sum = float(first) + float(second)
 
-print(sum)
+print("Sum: ", str(sum))
 
 #print(type(first))
 #print(type(second))
