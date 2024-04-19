@@ -76,7 +76,6 @@ def grade_mark (mark) :
         else:
           return 'invalid'
 
-    #return None    # code stub 
 
 
 ##########################
