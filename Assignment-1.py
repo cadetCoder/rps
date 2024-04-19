@@ -285,13 +285,22 @@ def send (bit_str) :
 
 def receive (signal_str) :
     # Insert function body to replace code stub
-    bit_str = signal_str[2:-2]
-    if len(bit_str) % 3 != 0:
+
+    # startswith and endswith string function method check for '**' and '__'.
+    # if not starts and end it'll return 'error'. (Headache :( ))
+    if not signal_str.startswith('**') or not signal_str.endswith('__'):
         return 'error'
-    for i in range(0, len(bit_str), 3):
-        if bit_str[i:i+3] not in ['*_*', '_*_']:
+    signal_str = signal_str[2:-2]
+    bit_str = ''
+    for i in range(0, len(signal_str), 3):
+        if signal_str[i:i+3] == '*_*':
+            bit_str += '0'
+        elif signal_str[i:i+3] == '_*_':
+            bit_str += '1'
+        else:
             return 'error'
-    return bit_str.replace('*_*', '0').replace('_*_', '1')
+        
+    return bit_str
 
 
 
