@@ -337,8 +337,8 @@ def valid_marks (thelist,min_mark,max_mark) :
 
 def in_order (stud_list) :
     # Insert function body to replace code stub
-    for i in range(1, len(stud_list)):
-        if stud_list[i][1] < stud_list[i-1][1]:
+    for i in range(len(stud_list) - 1):
+        if stud_list[i][1] > stud_list[i+1][1]:
             return False
 
     return True
