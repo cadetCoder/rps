@@ -57,8 +57,26 @@ task = 'task1'
 
 def grade_mark (mark) :
     # Insert function body to replace code stub
+        if mark == 0:
+          return 'F3'
+        elif 0 < mark < 20:
+            return 'F2'
+        elif 20 <= mark <= 39:
+            return 'F1'
+        elif 40 <= mark <= 49:
+            return 'P4'
+        elif 50 <= mark <= 59:
+            return 'P3'
+        elif 60 <= mark <= 69:
+            return 'P2'
+        elif 70 <= mark <= 79:
+            return 'P1'
+        elif 80 <= mark <= 100:
+            return 'P0'
+        else:
+          return 'invalid'
 
-    return None    # code stub 
+    #return None    # code stub 
 
 
 ##########################
@@ -88,8 +106,11 @@ def grade_mark (mark) :
 
 def stud_marks (modules,marks) :
     # Insert function body to replace code stub
+    result = []
+    for i in range(len(modules)):
+        result.append((modules[i], marks[i]))
 
-    return None    # code stub
+    return result    # code stub
 
 
 
