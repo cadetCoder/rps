@@ -285,8 +285,16 @@ def send (bit_str) :
 
 def receive (signal_str) :
     # Insert function body to replace code stub
+    bit_str = ''
+    i = 2
+    while i < len(signal_str):
+        if signal_str[i-1:i+2] == '*_*':
+            bit_str += '0'
+        elif signal_str[i-1:i+2] == '_*_':
+            bit_str += '1'
+        i += 1
 
-    return None    # code stub
+    return bit_str
 
 
 
