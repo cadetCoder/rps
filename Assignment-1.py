@@ -213,8 +213,15 @@ def prime_indexes (intlist) :
 
 def send (bit_str) :
     # Insert function body to replace code stub
+    signal_str = '**'
+    for bit in bit_str:
+        if bit == '0':
+            signal_str += '*_*'
+        else:
+            signal_str += '_*_'
 
-    return None    # code stub
+    signal_str += '__'
+    return signal_str
 
 
 
