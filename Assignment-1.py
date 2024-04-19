@@ -285,16 +285,13 @@ def send (bit_str) :
 
 def receive (signal_str) :
     # Insert function body to replace code stub
-    bit_str = ''
-    i = 2
-    while i < len(signal_str):
-        if signal_str[i-1:i+2] == '*_*':
-            bit_str += '0'
-        elif signal_str[i-1:i+2] == '_*_':
-            bit_str += '1'
-        i += 1
-
-    return bit_str
+    bit_str = signal_str[2:-2]
+    if len(bit_str) % 3 != 0:
+        return 'error'
+    for i in range(0, len(bit_str), 3):
+        if bit_str[i:i+3] not in ['*_*', '_*_']:
+            return 'error'
+    return bit_str.replace('*_*', '0').replace('_*_', '1')
 
 
 
@@ -325,8 +322,11 @@ def receive (signal_str) :
 
 def valid_marks (thelist,min_mark,max_mark) :
     # Insert function body to replace code stub
+    for mark in thelist:
+        if not isinstance(mark, int) or not min_mark <= mark <= max_mark:
+            return False
             
-    return None     # code stub
+    return True     # code stub
 
 
 
