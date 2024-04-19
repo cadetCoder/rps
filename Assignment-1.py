@@ -161,7 +161,15 @@ def prime_indexes (intlist) :
     # See specifiction above
     # Insert function body to replace code stub
 
-    return None    # code stub
+    primes = []
+    non_primes = []
+    for i in range(len(intlist)):
+        if is_prime(intlist[i]):
+            primes.append(i)
+        else:
+            non_primes.append(i)
+
+    return primes, non_primes
 
 
 
