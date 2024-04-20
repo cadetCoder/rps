@@ -83,7 +83,7 @@ class peg_game () :
     def next_player_ID (self) :
         # Insert function body to replace code stub
 
-        return 99   # code stub
+        return self.next
 
 
     ####################
@@ -93,8 +93,8 @@ class peg_game () :
         # the last turn (either 1 or 2)
     def previous_player_ID (self) :
         # Insert function body to replace code stub
-
-        return 99   # code stub
+        return self.next % 2 + 1
+ 
 
 
     ####################
@@ -113,8 +113,9 @@ class peg_game () :
         # if self.rows is [1,2,3] and self.maxplay is 4 the function returns 3
     def max_pegs_this_turn (self) :
         # Insert function body to replace code stub
-
-        return 99   # code stub
+          # Returns the limit on the number of pegs that can be inserted on the next turn
+          # This is the minimum of maxplay and the number of empty holes in the most-empty row
+          return min(self.maxplay, min(self.rows))
 
 
     ####################
@@ -125,7 +126,7 @@ class peg_game () :
     def empty_holes (self) :
         # Insert function body to replace code stub
 
-        return 99   # code stub
+        return sum(self.rows)
 
 
     ####################
@@ -136,9 +137,10 @@ class peg_game () :
         # Pegs are inserted in one row only, and that is always the
         # row with the largest number of empty holes
     def insert_pegs (self,pegs_to_add) :
-        # Insert function body to replace code stub
+      row_to_fill = self.rows.index(max(self.rows))
+      self.rows[row_to_fill] -= pegs_to_add
+      self.next = self.next_player_ID()
 
-        pass   # code stub (currently does nothing)
 
 
 # ----------------------------------------------------------------------------------------------------------------------------
