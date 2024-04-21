@@ -137,9 +137,12 @@ class peg_game () :
         # Pegs are inserted in one row only, and that is always the
         # row with the largest number of empty holes
     def insert_pegs (self,pegs_to_add) :
-      row_to_fill = self.rows.index(max(self.rows))
-      self.rows[row_to_fill] -= pegs_to_add
-      self.next = self.next_player_ID()
+
+        max_row = max(range(len(self.rows)), key=lambda i: self.rows[i])
+        self.rows[max_row] -= pegs_to_add
+        self.next = 2 if self.next == 1 else 1
+
+        pass
 
 
 
