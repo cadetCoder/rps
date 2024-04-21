@@ -92,8 +92,7 @@ class peg_game () :
         # Returns the identity of the player who played
         # the last turn (either 1 or 2)
     def previous_player_ID (self) :
-        # Insert function body to replace code stub
-        return self.next % 2 + 1
+        return self.player
  
 
 
@@ -124,9 +123,10 @@ class peg_game () :
         # Returns the total number of empty holes on the board
         # When this number is zero the game is over
     def empty_holes (self) :
-        # Insert function body to replace code stub
-
-        return sum(self.rows)
+        if sum(self.rows) == 0:
+            return False
+        else:
+            return True
 
 
     ####################
@@ -138,9 +138,14 @@ class peg_game () :
         # row with the largest number of empty holes
     def insert_pegs (self,pegs_to_add) :
 
-        max_row = max(range(len(self.rows)), key=lambda i: self.rows[i])
-        self.rows[max_row] -= pegs_to_add
-        self.next = 2 if self.next == 1 else 1
+        if pegs_to_add > self.max_pegs_this_turn():
+            return False
+
+        else:
+
+            self.rows[self.maxplay] -= pegs_to_add
+            self.rows[self.maxplay] += pegs_to_add
+            self.maxplay += 1
 
         pass
 
